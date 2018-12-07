@@ -1,17 +1,33 @@
 .container {
-  margin: 50;
   text-align: center; 
   float: auto; 
   padding: 50px;
+  overflow:scroll;
+  }
+
+.sidebar-left {
+width: 550px;
+
+}
+
+.sidebar-right {
+  width: 550px;
+}
+
+.btn {
+  width: 450px;
+}
+
+/* search bar button */
+.btn-success {
+  color: #fff;
+  background-color: lightblue;
+  border-color: black;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 150px auto 150px;
   grid-gap: 1em;
-}
-
-h1, footer {
   grid-column: 1 / 4;
 }
 
@@ -24,15 +40,15 @@ h1, footer {
 
 h1 {
   background: #eaeaea;
+  grid-column: 1 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 25vh;
+  height: 100px;
+  width: 100%;
 }
 
-aside,
-article,
-footer {
+aside {
   background: #eaeaea;
   display: flex;
   align-items: center;
