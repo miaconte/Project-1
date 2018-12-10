@@ -2,7 +2,7 @@
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 118.2468, lng: 34.0407},
           zoom: 6
         });
         infoWindow = new google.maps.InfoWindow;
