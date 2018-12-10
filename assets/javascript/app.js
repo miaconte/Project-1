@@ -1,5 +1,5 @@
 //searches songkick api for artists based on field input
-$("#artistBtn").on("click", function (event) {
+$("#artistBtn").on("click", function(event) {
 
     event.preventDefault();
     //input represents user input; if it is empty or just a bunch of empty space, user is an idiot and we ignore them; otherwise we continue
@@ -13,7 +13,7 @@ $("#artistBtn").on("click", function (event) {
   
     //upcoming event assumed to be true; if it is not, we will change it to false, report that nothing is found, and just return from on click function
     var upcomingFound = true;
-    var userUrl = "https://api.songkick.com/api/3.0/search/artists.json?apikey=jtB1rUwTpHo1n1bg&query=" + input;
+    var userUrl = "https://api.songkick.com/api/3.0/search/artists.json?apikey=jtB1rUwTpHo1n1bg&query=" + spacePlus(input);
   
     //first search songkick api for concerts by artist
     $.ajax({
@@ -21,16 +21,14 @@ $("#artistBtn").on("click", function (event) {
       url: userUrl
     }).then(function (data) {
       var artistData = data.resultsPage.results;
-  
       //if the search yields no results for the search term or the artist does not have a tour end date, no upcoming events found; songkick states null means not touring
       if (isEmpty(artistData) || artistData.artist[0].onTourUntil === null) {
         upcomingFound = false;
         return;
       }
   
-      //this may need to be edited, but the indentifier array only seems to have one item? that structure seems weird. maybe it used to have more?
-      var eventsUrl = resultsData.artist[0].indentifier[0].eventsHref + "?apikey=jtB1rUwTpHo1n1bg";
-  
+      //this may need to be edited, but the identifier array only seems to have one item? that structure seems weird. maybe it used to have more?
+      var eventsUrl = artistData.artist[0].identifier[0].eventsHref + "?apikey=jtB1rUwTpHo1n1bg";
       $.ajax({
         url: eventsUrl,
         method: "GET"
@@ -68,6 +66,13 @@ $("#artistBtn").on("click", function (event) {
         return false;
     }
     return true;
+  }
+
+  //changes spaces to plus
+  function spacePlus(str){
+      while(str.indexOf(" ") > -1)
+        str = str.replace(" ", "+");
+      return str;
   }
   
   //when the user clicks an eventDiv, look for bars and nightclubs near the venue
