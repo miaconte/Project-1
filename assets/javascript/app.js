@@ -12,7 +12,6 @@ $("#artistBtn").on("click", function(event) {
     $(".sidebar-left").empty();
   
     //upcoming event assumed to be true; if it is not, we will change it to false, report that nothing is found, and just return from on click function
-    var upcomingFound = true;
     var userUrl = "https://api.songkick.com/api/3.0/search/artists.json?apikey=jtB1rUwTpHo1n1bg&query=" + spacePlus(input);
   
     //first search songkick api for concerts by artist
@@ -23,7 +22,9 @@ $("#artistBtn").on("click", function(event) {
       var artistData = data.resultsPage.results;
       //if the search yields no results for the search term or the artist does not have a tour end date, no upcoming events found; songkick states null means not touring
       if (isEmpty(artistData) || artistData.artist[0].onTourUntil === null) {
-        upcomingFound = false;
+        var report = $("<div>");
+        report.html("We're sorry, but that artist does not seem to have any upcoming events at this time."); //THIS MAY NEED TO BE EDITED FOR FORMATTING!
+        $(".sidebar-left").append(report);
         return;
       }
   
@@ -49,14 +50,6 @@ $("#artistBtn").on("click", function(event) {
         }
       });
     });
-  
-    //if upcoming event not found, tell the user; message displays in sidebar-left
-    if (!upcomingFound) {
-      var report = $("<div>");
-      report.html("We're sorry, but that artist does not seem to have any upcoming events at this time."); //THIS MAY NEED TO BE EDITED FOR FORMATTING!
-      $(".sidebar-left").append(report);
-      return;
-    }
   })
   
   //used to check if an object is empty (for example, songkick returns an empty object if an artist is not found)

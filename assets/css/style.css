@@ -1,9 +1,9 @@
 .container {
-  text-align: center; 
-  float: auto; 
-  padding: 50px;
-  overflow:scroll;
-  }
+text-align: center; 
+float: auto; 
+padding: 50px;
+overflow:scroll;
+}
 
 .sidebar-left {
 width: 550px;
@@ -23,11 +23,11 @@ width: 550px;
 }
 
 /* search bar button */
-.btn-success {
+/* .btn-success {
   color: #fff;
   background-color: lightblue;
   border-color: black;
-}
+} */
 
 .grid {
   display: grid;
@@ -52,12 +52,20 @@ h1 {
   width: 100%;
 }
 
-aside {
+#tour {
   background: #eaeaea;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 25vh;
+  text-align: center; 
+  float: auto; 
+  padding: 50px;
+  overflow:scroll;
+}
+
+.aside {
+  background: #eaeaea;
+  text-align: center; 
+  float: auto; 
+  padding: 50px;
+  overflow:scroll;
 }
 
 /* Search Bar */
