@@ -1,81 +1,71 @@
 .container {
-text-align: center; 
-float: auto; 
-padding: 50px;
-overflow:scroll;
-}
-
-.sidebar-left {
-width: 550px;
-
-}
-
-.sidebar-right {
-  width: 550px;
-}
-
-#artistBtn {
-  width: 450px;
-}
+  text-align: center; 
+  float: auto; 
+  padding: 50px;
+  overflow:scroll;
+  }
   
-#BLANK {
-  width: 450px;
-}
-
-/* search bar button */
-/* .btn-success {
-  color: #fff;
-  background-color: lightblue;
-  border-color: black;
-} */
-
-.grid {
-  display: grid;
-  grid-gap: 1em;
-  grid-column: 1 / 4;
-}
-
-@media all and (max-width: 700px) {
-  aside,
-  article {
+  .sidebar-left {
+  width: 550px;
+  
+  }
+  
+  .sidebar-right {
+    width: 550px;
+  }
+  
+  #artistBtn {
+    width: 100%;
+  }
+    
+  #venue {
+    width: 100%;
+  } 
+  
+  .grid {
+    display: grid;
+    grid-gap: 1em;
     grid-column: 1 / 4;
   }
-}
-
-h1 {
-  background: #eaeaea;
-  grid-column: 1 / 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100%;
-}
-
-#tour {
-  background: #eaeaea;
-  text-align: center; 
-  float: auto; 
-  padding: 50px;
-  overflow:scroll;
-}
-
-.aside {
-  background: #eaeaea;
-  text-align: center; 
-  float: auto; 
-  padding: 50px;
-  overflow:scroll;
-}
-
-/* Search Bar */
-
-.form-control-borderless {
-  border: none;
-}
-
-.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
+  
+  @media all and (max-width: 700px) {
+    aside,
+    article {
+      grid-column: 1 / 4;
+    }
+  }
+  
+  h1 {
+    background: #eaeaea;
+    grid-column: 1 / 4;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #tour {
+    background: #eaeaea;
+    text-align: center; 
+    float: auto; 
+    padding: 50px;
+    overflow:scroll;
+  }
+  
+  .aside {
+    background: #eaeaea;
+    text-align: center; 
+    float: auto; 
+    padding: 50px;
+    overflow:scroll;
+  }
+  
+  /* Search Bar */
+  
+  .form-control-borderless {
+    border: none;
+  }
+  
+  .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
