@@ -6,13 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-        
-        
-        <title>Project-1</title>
+        <title>Appter Party (Project-1)</title>
     </head>
     <body>
         <div class="searchBar">
@@ -23,42 +22,73 @@
                         <div class="col-auto">
                             <i class="fas fa-search h4 text-body"></i>
                         </div>
-                        <!-- end of col -->
-                        <div class="col-12">
-                            <input class="form-control form-control-lg form-control-borderless" id="srch" type="search"
-                                placeholder="Search topics or keywords">
-                        </div>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" id="artistBtn">Search by Artist</button>
-                            </div>
-                            <div class="col">
-                            <button type="button" id="venue">Search by Venue</button>
-                            </div>
-                        </div>
-                    <!-- </form> -->
-                </div>
-                <div class="container">
-                    <div class="grid">
-                        <div id="map"></div>
-                        <div class="container">
-                            <aside class="sidebar-left">
-                                <p>Tour info</p>
-                            </aside>
-                        </div>
-                        <div class="container" id="afterParty">
-                            <aside class="sidebar-right">
-                                <p>bar information / data</p>
-                            </aside>
+                    <!-- end of col -->
+                    <div class="col-12">
+                        <input class="form-control form-control-lg form-control-borderless" id="srch" type="search"    
+                            placeholder="Search..">
+                    </div>
+                    <div class="scrollableHTU">
+                    <div class ="exText">
+                        <br /><p><h2>Find events in your area!</h2><br />Welcome to After Party, a place where you can find bands on tour, concert venues in your area, and After Party locations near your event. 
+                            <br />
+                            <h2>How to use:</h2><br /> 
+                            <strong>'Search by artist'</strong>, type in your desired artist, their tour will appear if they're currently on the road!<br />
+                            <strong>'Search by Venue'</strong>, use the name of the venue and the city separated by a comma, this will show any upcoming events that venue has.<br /> Ex/ "Staples Center, Los Angeles".<br /><br />
+                            <strong>'Create Saved Event'</strong>, once you've searched for an event or a touring artist, you can click on the event you wish to remember and save it using this button.<br />
+                            <strong>'My Saved Events'</strong>, this will store all of your upcoming tour date information that you wish to attend, venues, and after party locations you want to remember.</p>
+                            <strong>Map Feature</strong>, if you're looking for an event unfamiliar to you, use our map! All of your choices will be marked with a pin.<br />
+                        <div>
                         </div>
                     </div>
                 </div>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws&callback=initMap"async defer></script> 
-                <script type="text/javascript" src="assets/javascript/app.js"></script>     
-                <script type="text/javascript" src="assets/javascript/lol.js"></script>  
+            <br /><br /><br />
+        </div>
+        <br /><br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button type="button" id="artistBtn">Search by Artist</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="venueBtn">Search by Venue</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="recallBtn">My Saved Events</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="delBtn">Delete Selected Event</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="saveBtn">Create Saved Event</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- </form> -->
+        <br />
+        </div>
+        <div class="container">
+            <div class="scrollable">
+                <div class="sidebar-left">
+                </div>
+            </div>
+            <div class="scrollable2">
+                <aside class="sidebar-right">
+                </aside>
+                <div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <br />
+        <div class="container">
+            <div id="map"></div>
+        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws&callback=initMap"
+            async defer></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="assets/javascript/lol.js"></script>
     </body>
+
 </html>
-
-

@@ -1,71 +1,137 @@
+* {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+}
+
 .container {
-  text-align: center; 
-  float: auto; 
+  border-radius: 25px;
+  text-align: center;
+  float: auto;
   padding: 50px;
-  overflow:scroll;
-  }
-  
-  .sidebar-left {
+  overflow: scroll;
+  background-color:rgb(29,108,128, 0.3);
+}
+
+.scrollableHTU {
+  height: 300px; 
+  overflow-y: scroll;
+  float: center;
+}
+
+.sidebar-left {
   width: 550px;
-  
-  }
-  
-  .sidebar-right {
-    width: 550px;
-  }
-  
-  #artistBtn {
-    width: 100%;
-  }
-    
-  #venue {
-    width: 100%;
-  } 
-  
-  .grid {
-    display: grid;
-    grid-gap: 1em;
+  border-radius: 25px;
+  background-color: " ";
+
+}
+
+.sidebar-right {
+  width: 550px;
+  border-radius: 25px;
+  background-color: " ";
+}
+
+#srch {
+  width: 600px;
+  margin: auto;
+  border: solid black 5px;
+}
+
+.exText {
+  text-align: center; 
+}
+
+#artistBtn {
+  width: 100%;
+  background: white;
+  border: solid black 2px;
+}
+
+#saveBtn {
+  width: 100%;
+  background: white;
+  border: solid black 2px;
+}
+
+#recallBtn {
+  width: 100%;
+  background: white;
+  border: solid black 2px;
+}
+
+#venueBtn {
+  width: 100%;
+  background: white;
+  border: solid black 2px;
+}
+
+#delBtn {
+  width: 100%;
+  background: white;
+  border: solid black 2px;
+}
+
+.scrollable {
+  height: 400px; 
+  width: 50%;
+  overflow-y: scroll;
+  float: left;
+}
+
+.scrollable2 {
+  height: 400px; 
+  width: 50%;
+  overflow-y: scroll;
+  float: right;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 1em;
+  grid-column: 1 / 4;
+}
+
+@media all and (max-width: 700px) {
+
+  aside,
+  article {
     grid-column: 1 / 4;
   }
-  
-  @media all and (max-width: 700px) {
-    aside,
-    article {
-      grid-column: 1 / 4;
-    }
-  }
-  
-  #map {
-    background: #eaeaea;
-    grid-column: 1 / 4;
-    height: 300px;
-    width: 95%;
-  }
-  
-  #tour {
-    background: #eaeaea;
-    text-align: center; 
-    float: auto; 
-    padding: 50px;
-    overflow:scroll;
-  }
-  
-  .aside {
-    background: #eaeaea;
-    text-align: center; 
-    float: auto; 
-    padding: 50px;
-    overflow:scroll;
-  }
-  
-  /* Search Bar */
-  
-  .form-control-borderless {
-    border: none;
-  }
-  
-  .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-    border: 2px solid black;
-    outline: none;
-    box-shadow: none;
-  }
+}
+
+#map {
+  background: #eaeaea;
+  margin: 30px;
+  height: 400px;
+  width: 95%;
+}
+
+#tour {
+  background: #eaeaea;
+  text-align: center;
+  float: auto;
+  padding: 50px;
+  overflow: scroll;
+}
+
+.aside {
+  background: #eaeaea;
+  text-align: center;
+  float: auto;
+  padding: 50px;
+  overflow: scroll;
+}
+
+/* Search Bar */
+
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+  border: 2px solid black;
+  outline: none;
+  box-shadow: none;
+}

@@ -1,52 +1,84 @@
+function initMap() {
 
-      var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 118.2468, lng: 34.0407},
-          zoom: 6
-        });
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-
-
-
-$(document).on("click", ".eventDiv", function(){
-    $(".right-aside").empty();
-
-    var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pos + "&radius=1500&type=night_club&key=AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws"//you can define a var to hold the url here
-
+  function findNearby () {
+    var placesAPI = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.7204065,-73.9933583&radius=3000&type=night_club&key=AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws"
+    var theBars = [];
     $.ajax({
-        method: "GET",
-        url: queryURL, //you need to define this
-    }).then(function(data){
-        //you can redefine what you want to call the data, i just called it data so as not to forget to include it
-    });
-});
+      url: placesAPI,
+      method: "GET",
+    }).then(function (barData){
+      console.log(barData);
+  for (var i = 0; i < barData.results.length; i++) {
+        var nameBar = barData.results[i].name;
+        var latitude = barData.results[i].geometry.location.lat;
+        var longitude = barData.results[i].geometry.location.lng;
+         
+       theBars.push([nameBar + ", " + latitude + ", " + longitude]);
+       
+       
+       var nameDiv = $("<div>");
+       nameDiv.html("<b>"+ nameBar + "</b>");
+       nameDiv.attr("data-name", nameBar);
+       nameDiv.attr("data-lat", latitude);
+       nameDiv.attr("data-long", longitude);
+      }
+      console.log(theBars);
+    })
+   
+   
+  }
+    
+    var eventfulAPI = "https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/venues/search?&keywords=The-Bowery-Ballroom-&location=New+York+City&app_key=6L8hCFHHB2ZfRdCm";
+   
+   
+    $.ajax({
+      url: eventfulAPI,
+      method: "GET",
+    }).then(function (roxyData) {
+      var a = JSON.parse(roxyData);
+      console.log(a.venues.venue.latitude);
+      console.log(a.venues.venue.longitude);
+   
+      var lati = parseFloat(a.venues.venue.latitude);
+      var long = parseFloat(a.venues.venue.longitude);
+   
+      var eventLatLng = { lat: lati, lng: long };
+  
+   
+      
+   
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: eventLatLng
+      });
+      var locations =
+      [
+        ["FLatiron Lounge", "40.7399782","-73.99321549999999"],
+        ["Tamarind Tribeca","40.719112","-74.0090815"],
+        ["The DL", "40.718558","-73.989333"]
+      ]
+      var infoWIndow = new google.maps.InfoWindow();
+      var marker, i;
+      for ( var i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        title: 'Hello World!'
+      });
+        marker = new google.maps.Marker({
+          position: eventLatLng,
+          map: map,
+        })
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+    
+    })
+    
+    findNearby(); 
+    
+  }
