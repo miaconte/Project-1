@@ -150,7 +150,7 @@ if (localStorage.getItem("memEvents") === null) {
   
     $("#saveBtn").show();
   })
-  
+  function initMap () {
   //when the user clicks an eventDiv, look for bars and nightclubs near the venue
   $(document).on("click", ".eventDiv", function () {
     $(".sidebar-right").empty();
@@ -159,15 +159,19 @@ if (localStorage.getItem("memEvents") === null) {
     //search within 3.5 km of venue for a post-concert party location; may be expanded or shrunken later
   
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $(this).attr("data-lat") + "," + $(this).attr("data-long") + "&radius=3500&type=night_club&key=AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws";
-  
+    var venLat = $(this).attr("data-lat");
+    var venLong = $(this).attr("data-long");
     $.ajax({
       method: "GET",
       url: queryURL
     }).then(function (data) {
       var suggestions = data.results;
+
+      console.log(typeof $(this).attr("data-lat"));
+
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: { lat: parseFloat($(this).attr("data-lat")), lng: parseFloat($(this).attr("data-long")) }
+        center: { lat: parseFloat(venLat), lng: parseFloat(venLong) }
       });
       for (let i = 0; i < suggestions.length; i++) {
         var latitude = suggestions[i].geometry.location.lat;
@@ -193,7 +197,7 @@ if (localStorage.getItem("memEvents") === null) {
       }
     });
   });
-  
+}
   
   $(document).on("click", ".venueOpt", function () {
     //clear the left bar

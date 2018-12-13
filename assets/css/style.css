@@ -31,6 +31,10 @@
   background-color: " ";
 }
 
+.aParty {
+  text-align: center;
+}
+
 #srch {
   width: 600px;
   margin: auto;
